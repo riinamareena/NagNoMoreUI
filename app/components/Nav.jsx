@@ -2,16 +2,47 @@ var React = require('react');
 var {Link, IndexLink} = require('react-router');
 
 var Nav = React.createClass({
+  onSearch: function(){
+    alert("Not yet working");
+  },
   render: function(){
     return(
-      <div>
-        <h2>Navigation Component</h2>
-        <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
-        <Link to="about" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>About</Link>
-        <Link to="examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Examples</Link>
-        <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Family</Link>
-        <Link to="tasks" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Tasks</Link>
+      <div className="top-bar">
+        <div className="top-bar-left">
+          <ul className="menu">
+            <li className="menu-text">Nag No More</li>
+            <li>
+              <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
+            </li>
+            <li>
+              <Link to="about" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>About</Link>
+            </li>
+            <li>
+              <Link to="examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Examples</Link>
+            </li>
+            <li>
+              <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Family</Link>
+            </li>
+            <li>
+              <Link to="tasks" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Tasks</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="top-bar-right">
+          <form onSubmit={this.onSearch}>
+            <ul className="menu">
+              <li>
+                <input type="search" placeholder="Search task" />
+              </li>
+              <li>
+                <input type="submit" className="button" value="Find" />
+              </li>
+            </ul>
+          </form>
+        </div>
+
       </div>
+
     );
   }
 });
