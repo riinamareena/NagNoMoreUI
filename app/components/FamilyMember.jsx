@@ -29,11 +29,3 @@ var FamilyMember = React.createClass({
 });
 
 module.exports = FamilyMember;
-
-
-var old = function(){
-  return(
-    <td><label onClick={handleEditClick.bind({that}, id)}>Edit</label><label onClick={that.props.onDelete}>Delete</label></td>
-
-  );
-}

@@ -84,25 +84,38 @@ var Family = React.createClass({
     return familyMember;
 
   },
+  handleDeleteMember: function(id){
+    var familyMembers = this.state.familyMembers;
+    var filteredFamilyMembers = familyMembers.filter(function(item, index){
+      if(item.id != id){
+        return item;
+      }
+    });
+
+    this.setState({
+      familyMembers: filteredFamilyMembers
+    })
+    
+  },
   handleEditMember: function(id){
     this.setState({
           familyPage: "editMember",
           editid: id
     });
-    alert("Family Edit Member");
   },
   handleSaveEditedMember: function(id, name, role){
     var familyMembers = this.state.familyMembers;
 
-    familyMembers.forEach(function(entry) {
-      if (entry.id === id){
-        entry.name = "name";
-        entry.role = "role";
+    var editedFamilyMembers = familyMembers.map(function(item, index) {
+      if (item.id == id){
+        item.name = name;
+        item.role = role;
       }
+      return item;
     });
 
-    setState({
-      familyMembers : familyMembers,
+    this.setState({
+      familyMembers : editedFamilyMembers,
       familyPage: "list",
       editid: null
     })
@@ -112,6 +125,7 @@ var Family = React.createClass({
 
     var familyMembers = this.state.familyMembers;
     var handleAddMember = this.handleAddMember;
+    var handleDeleteMember = this.handleDeleteMember;
     var handleEditMember = this.handleEditMember;
     var handleSaveEditedMember = this.handleSaveEditedMember;
     var findFamilyMember = this.findFamilyMember;
@@ -127,7 +141,7 @@ var Family = React.createClass({
         renderContent = (
           <div>
             <h1 className="text-center">Family</h1>
-            <FamilyMemberList familyMembers={familyMembers} onEditMember={handleEditMember} />
+            <FamilyMemberList familyMembers={familyMembers} onEditMember={handleEditMember} onDeleteMember={handleDeleteMember} />
             <FamilyMemberAdd  onAddMember={handleAddMember} />
           </div>
         );

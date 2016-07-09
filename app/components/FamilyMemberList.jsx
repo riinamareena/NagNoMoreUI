@@ -5,11 +5,10 @@ var FamilyMember = require('FamilyMember');
 
 var FamilyMemberList = React.createClass({
   handleEdit: function(id){
-    alert("Edit "+id);
     this.props.onEditMember(id);
   },
   handleDelete: function(id){
-    alert("Delete " +id)
+    this.props.onDeleteMember(id);
   },
   render: function(){
 
