@@ -34,6 +34,7 @@ module.exports = {
       FamilyMember: 'app/components/FamilyMember.jsx',
       FamilyMemberAdd: 'app/components/FamilyMemberAdd.jsx',
       FamilyMemberList: 'app/components/FamilyMemberList.jsx',
+      FamilyMemberEdit: 'app/components/FamilyMemberEdit.jsx',
       TodoApp: 'app/components/TodoApp.jsx',
       Todo: 'app/components/Todo.jsx',
       TodoAdd: 'app/components/TodoAdd.jsx',

@@ -12,7 +12,10 @@ var Nav = React.createClass({
           <ul className="menu">
             <li className="menu-text">Nag No More</li>
             <li>
-              <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
+              <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Check out the tasks</IndexLink>
+            </li>
+            <li>
+              <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>See the family</Link>
             </li>
             <li>
               <Link to="about" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>About</Link>
@@ -21,10 +24,7 @@ var Nav = React.createClass({
               <Link to="examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Examples</Link>
             </li>
             <li>
-              <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Family</Link>
-            </li>
-            <li>
-              <Link to="tasks" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Tasks</Link>
+              <Link to="weather" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get the weather</Link>
             </li>
           </ul>
         </div>

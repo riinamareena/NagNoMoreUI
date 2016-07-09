@@ -1,17 +1,39 @@
 var React = require('react');
 
 var FamilyMember = React.createClass({
+  handleDeleteMember: function(id){
+    this.props.onDelete(id);
+  },
+  handleEditMember: function(id){
+    this.props.onEdit(id);
+  },
   render: function(){
-    return(
-      <div>
-        <h2>FamilyMember Component</h2>
-        <p>id: {this.props.id}</p>
-        <p>name: {this.props.name}</p>
-        <p onClick={this.props.onEdit}>Edit</p>
 
-      </div>
+    var handleEditMember = this.handleEditMember;
+    var handleDeleteMember = this.handleDeleteMember;
+
+    var id = this.props.id;
+    var name = this.props.name;
+    var role = this.props.role;
+
+
+    return(
+      <tr>
+        <td>{id}</td>
+        <td>{name}</td>
+        <td>{role}</td>
+        <td><label onClick={handleEditMember.bind(this, id)}>Edit</label><label onClick={handleDeleteMember.bind(this, id)}>Delete</label></td>
+      </tr>
     );
   }
 });
 
 module.exports = FamilyMember;
+
+
+var old = function(){
+  return(
+    <td><label onClick={handleEditClick.bind({that}, id)}>Edit</label><label onClick={that.props.onDelete}>Delete</label></td>
+
+  );
+}
