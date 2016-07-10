@@ -32,7 +32,7 @@ var Family = React.createClass({
           },
           {
               id:5,
-              name: "Joona",
+              name: "Jonna",
               role: "child"
           }
       ],
@@ -95,7 +95,7 @@ var Family = React.createClass({
     this.setState({
       familyMembers: filteredFamilyMembers
     })
-    
+
   },
   handleEditMember: function(id){
     this.setState({
