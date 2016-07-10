@@ -21,7 +21,7 @@ var Todo = React.createClass({
       <tr>
         <td>{id}</td>
         <td>{text}</td>
-        <td>{assignee}</td>
+        <td>{this.props.onSearchAssignee(assignee)}</td>
         <td><label onClick={handleEditTodo.bind(this, id)}>Edit</label><label onClick={handleDeleteTodo.bind(this, id)}>Delete</label></td>
       </tr>
     );

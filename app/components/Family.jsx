@@ -32,7 +32,7 @@ var Family = React.createClass({
           },
           {
               id:5,
-              name: "Jonna",
+              name: "Joona",
               role: "child"
           }
       ],
