@@ -50,15 +50,29 @@ var TodoApp = React.createClass({
             role: "child"
         }
       ],
-      todoid: 3
+      todoid: 3,
+      todoPage: "todoList",
+      todoEditid: null
     }
   },
   getInitialState: function() {
     return {
       todos: this.props.todos,
       categories: this.props.categories,
-      todoid: this.props.todoid
+      todoid: this.props.todoid,
+      todoPage: this.props.todoPage,
+      todoEditid: this.props.todoEditid
     }
+  },
+  findTodo: function(id){
+    var todos = this.state.todos;
+    var todo = null;
+    todos.forEach(function(entry) {
+      if (entry.id == id){
+        todo = entry;
+      }
+    });
+    return todo;
   },
   handleAddTodo: function(text, assignee){
     var todoid = this.state.todoid;
@@ -80,6 +94,10 @@ var TodoApp = React.createClass({
   },
   handleEditTodo: function(id){
     alert("App handles edit "+id);
+    this.setState({
+      todoPage: "editTodo",
+      todoEditid: id
+    })
   },
   handleDeleteTodo: function(id){
 
@@ -97,22 +115,65 @@ var TodoApp = React.createClass({
     })
 
   },
-  render: function(){
+  handleSaveEditedTodo: function(id, text, assignee){
+    var todos = this.state.todos;
+
+    var editedTodos = todos.map(function(item, index) {
+      if (item.id == id){
+        item.text = text;
+        item.assignee = assignee;
+      }
+      return item;
+    });
+
+    this.setState({
+      todos : editedTodos,
+      todoPage: "todoList",
+      todoEditid: null
+    })
+
+  },
+  renderPage: function(page){
 
     var handleEditTodo = this.handleEditTodo;
     var handleDeleteTodo = this.handleDeleteTodo;
     var handleAddTodo = this.handleAddTodo;
+    var handleSaveEditedTodo = this.handleSaveEditedTodo;
+
     var todos = this.state.todos;
     var familyMembers = this.props.familyMembers;
 
+    if(page == "editTodo"){
 
-    return(
-      <div>
-        <h1 className="text-center">To do</h1>
-        <TodoList todos={todos} familyMembers={familyMembers} onEditTodo={handleEditTodo} onDeleteTodo={handleDeleteTodo} />
-        <TodoAdd familyMembers={familyMembers} onAddTodo={handleAddTodo} />
-      </div>
-    );
+      var todo = this.findTodo(todoEditid);
+
+      return(
+        <div>
+          <h1 className="text-center">To do</h1>
+          <TodoEdit todo={todo} familyMembers={familyMembers} onSaveEditedTodo={handleSaveEditedTodo} />
+        </div>
+      )
+    } else if (page == "todoList") {
+      return(
+        <div>
+          <h1 className="text-center">To do</h1>
+          <TodoList todos={todos} familyMembers={familyMembers} onEditTodo={handleEditTodo} onDeleteTodo={handleDeleteTodo} />
+          <TodoAdd familyMembers={familyMembers} onAddTodo={handleAddTodo} />
+        </div>
+      );
+    }
+
+  },
+  render: function(){
+
+
+    var page = this.state.todoPage;
+
+    var content = this.renderPage(page);
+
+    return content;
+
+
   }
 });
 
