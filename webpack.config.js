@@ -25,11 +25,7 @@ module.exports = {
     alias: {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
-      Weather: 'app/components/Weather.jsx',
-      WeatherForm: 'app/components/WeatherForm.jsx',
-      WeatherMessage: 'app/components/WeatherMessage.jsx',
       About: 'app/components/About.jsx',
-      Examples: 'app/components/Examples.jsx',
       Family: 'app/components/Family.jsx',
       FamilyMember: 'app/components/FamilyMember.jsx',
       FamilyMemberAdd: 'app/components/FamilyMemberAdd.jsx',
@@ -39,7 +35,11 @@ module.exports = {
       Todo: 'app/components/Todo.jsx',
       TodoAdd: 'app/components/TodoAdd.jsx',
       TodoEdit: 'app/components/TodoEdit.jsx',
-      TodoList: 'app/components/TodoList.jsx'
+      TodoList: 'app/components/TodoList.jsx',
+      Category: 'app/components/Category.jsx',
+      CategoryAdd: 'app/components/CategoryAdd.jsx',
+      CategoryList: 'app/components/CategoryList.jsx',
+      CategoryItem: 'app/components/CategoryItem.jsx'
     }
   },
   module: {

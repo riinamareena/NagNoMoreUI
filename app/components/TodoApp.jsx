@@ -2,6 +2,7 @@ var React = require('react');
 
 var TodoList = require('TodoList');
 var TodoAdd = require('TodoAdd');
+var TodoEdit = require('TodoEdit');
 
 var TodoApp = React.createClass({
   getDefaultProps: function(){
@@ -93,16 +94,12 @@ var TodoApp = React.createClass({
 
   },
   handleEditTodo: function(id){
-    alert("App handles edit "+id);
     this.setState({
       todoPage: "editTodo",
       todoEditid: id
     })
   },
   handleDeleteTodo: function(id){
-
-    alert("App handles delete "+id);
-
     var todos = this.state.todos;
     var filteredTodos = todos.filter(function(item, index){
       if(item.id != id){
@@ -145,6 +142,7 @@ var TodoApp = React.createClass({
 
     if(page == "editTodo"){
 
+      var todoEditid = this.state.todoEditid;
       var todo = this.findTodo(todoEditid);
 
       return(

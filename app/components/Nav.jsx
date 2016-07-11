@@ -18,13 +18,10 @@ var Nav = React.createClass({
               <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>See the family</Link>
             </li>
             <li>
+              <Link to="category" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Categories</Link>
+            </li>
+            <li>
               <Link to="about" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>About</Link>
-            </li>
-            <li>
-              <Link to="examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Examples</Link>
-            </li>
-            <li>
-              <Link to="weather" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get the weather</Link>
             </li>
           </ul>
         </div>

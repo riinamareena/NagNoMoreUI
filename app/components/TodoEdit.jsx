@@ -20,29 +20,15 @@ var TodoEdit = React.createClass({
   onFormSubmit: function(e){
     e.preventDefault();
 
-    /*
-    var currName = this.refs.currName.value;
-    var currRole = this.refs.currRole.value;
     var id = this.refs.id.value;
+    var text = this.state.text;
+    var assignee = this.state.assignee;
 
-    var name = this.refs.name.value;
-    var roleParent = this.refs.roleParent.checked;
-    var roleChild = this.refs.roleChild.checked;
-
-    var saveName = currName;
-    if( typeof(name) === 'string' && name.length > 0){
-      saveName = name;
+    if(text.length > 0){
+      this.props.onSaveEditedTodo(id, text, assignee);
+    } else {
+      this.refs.text.focus();
     }
-
-    var saveRole = "child";
-    if(roleParent){
-      saveRole = "parent";
-    }
-
-
-
-    this.props.onSaveEditedTodo(id, saveText, saveAssignee);
-*/
   },
   render: function(){
 
@@ -62,7 +48,7 @@ var TodoEdit = React.createClass({
           </div>
           <div className="row">
             <label>What needs to be done?</label>
-            <input type="text" ref="text" value=text onChange={this.handleTextChange} />
+            <input type="text" ref="text" value={text} onChange={this.handleTextChange} />
           </div>
           <div className="row">
             <label>Who needs to do it?</label>
@@ -71,7 +57,7 @@ var TodoEdit = React.createClass({
               {
                 familyMembers.map(function(member) {
                   return (
-                    <option value={member.id} key={member.id} onSelect={handleSelect}>{member.name}</option>
+                    <option value={member.id} key={member.id}>{member.name}</option>
                   )
                 })
               }
@@ -83,10 +69,12 @@ var TodoEdit = React.createClass({
           </form>
         </div>
       );
+
+      return (renderContent);
+
     }
 
-    return (renderContent);
- }
+
 
 });
-module.exports = FamilyMemberEdit;
+module.exports = TodoEdit;
