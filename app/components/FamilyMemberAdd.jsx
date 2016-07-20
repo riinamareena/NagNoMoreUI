@@ -1,7 +1,15 @@
 var React = require('react');
+var ErrorModal = require('ErrorModal');
 
 var FamilyMemberAdd = React.createClass({
+  getInitialState: function(){
+    return({
+      errorMessage: undefined
+    })
+  },
   onFormSubmit: function(e){
+
+
     e.preventDefault();
     var name = this.refs.name.value;
     var roleParent = this.refs.roleParent.checked;
@@ -24,6 +32,11 @@ var FamilyMemberAdd = React.createClass({
 
   },
   render: function(){
+
+    var errorMessage = this.state.errorMessage;
+
+
+
     return(
       <div>
         <form onSubmit={this.onFormSubmit}>
@@ -39,6 +52,7 @@ var FamilyMemberAdd = React.createClass({
             <button className="expanded round button">Add member</button>
           </div>
         </form>
+
       </div>
     );
   }

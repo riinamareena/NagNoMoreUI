@@ -6,8 +6,8 @@ var CategoryList = React.createClass({
   handleDeleteCategory: function(id){
     this.props.onDeleteCategory(id);
   },
-  handleSaveEditedCategory: function(id, name){
-    this.props.onSaveEditedCategory(id, name);
+  handleSaveEditedCategory: function(id, title, desc){
+    this.props.onSaveEditedCategory(id, title, desc);
   },
   render: function(){
     var categories = this.props.categories;

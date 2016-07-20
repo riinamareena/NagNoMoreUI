@@ -4,13 +4,19 @@ var CategoryItem = React.createClass({
   getInitialState: function(){
     return{
       id: this.props.item.id,
-      name: this.props.item.name,
+      title: this.props.item.title,
+      desc: this.props.item.description,
       edit: false
     }
   },
-  handleChange: function(e){
+  handleTitleChange: function(e){
     this.setState({
-      name: e.target.value
+      title: e.target.value
+    })
+  },
+  handleDescChange: function(e){
+    this.setState({
+      desc: e.target.value
     })
   },
   handleEdit: function(){
@@ -27,50 +33,63 @@ var CategoryItem = React.createClass({
   handleSave: function(e){
     e.preventDefault();
     var id = this.state.id;
-    var name = this.state.name;
+    var title = this.state.title;
+    var desc = this.state.desc;
 
-    if(name.length > 0){
-      this.props.onSaveEditedCategory(id, name);
+    if(title.length > 0){
+      this.props.onSaveEditedCategory(id, title, desc);
 
       this.setState({
         edit: false
       })
     }
     else{
-      alert("Category name is way too short.")
+      alert("Category title is way too short.")
     }
 
   },
   render: function(){
 
-    var name = this.state.name;
+    var title = this.state.title;
+    var desc = this.state.desc;
     var edit = this.state.edit;
-
-
-    console.log(name);
-    console.log(edit);
 
 
 
     if(edit){
       return(
-        <div>
+        <div className="row">
           <form onSubmit={this.handleSave}>
-            <input type="text" refs="name" value={name} onChange={this.handleChange} />
-            <button>Save</button>
+            <input type="text" refs="title" value={title} onChange={this.handleTitleChange} />
+            <input type="text" refs="desc" value={desc} onChange={this.handleDescChange} />
+            <button className="expanded round button">Save</button>
           </form>
         </div>
       )
     } else {
     return(
-        <div>
-          <h3>{name}</h3>
-          <label onClick={this.handleEdit}>Edit</label>
-          <label onClick={this.handleDelete}>Delete</label>
+      <div>
+        <div className="row">
+          <h3>{title}</h3>
+          <p>{desc}</p>
         </div>
+        <div className="row">
+            <div>
+              <label onClick={this.handleEdit}>Edit</label>
+              <label onClick={this.handleDelete}>Delete</label>
+            </div>
+        </div>
+      </div>
       );
     }
   }
 });
 
 module.exports = CategoryItem;
+
+/*var old = (
+  <div>
+  <label onClick={this.handleEdit}>Edit</label>
+  <label onClick={this.handleDelete}>Delete</label>
+  </div>
+);*/

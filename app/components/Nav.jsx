@@ -15,7 +15,7 @@ var Nav = React.createClass({
               <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Check out the tasks</IndexLink>
             </li>
             <li>
-              <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>See the family</Link>
+              <Link to="family" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>See your family</Link>
             </li>
             <li>
               <Link to="category" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Categories</Link>

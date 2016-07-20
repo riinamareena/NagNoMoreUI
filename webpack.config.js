@@ -21,11 +21,17 @@ module.exports = {
   },
   resolve: {
     root: __dirname,
+    modulesDirectories: [
+      'node_modules',
+      './app/components'
+    ],
     extensions: ['', '.js', '.jsx'],
     alias: {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
       About: 'app/components/About.jsx',
+      DateTimePicker: 'app/components/DateTimePicker.jsx',
+      ErrorModal: 'app/components/ErrorModal.jsx',
       Family: 'app/components/Family.jsx',
       FamilyMember: 'app/components/FamilyMember.jsx',
       FamilyMemberAdd: 'app/components/FamilyMemberAdd.jsx',
@@ -39,7 +45,8 @@ module.exports = {
       Category: 'app/components/Category.jsx',
       CategoryAdd: 'app/components/CategoryAdd.jsx',
       CategoryList: 'app/components/CategoryList.jsx',
-      CategoryItem: 'app/components/CategoryItem.jsx'
+      CategoryItem: 'app/components/CategoryItem.jsx',
+      applicationStyles: 'app/styles/app.scss'
     }
   },
   module: {
