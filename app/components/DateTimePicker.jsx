@@ -1,7 +1,6 @@
 var React = require('react');
 var DateTime = require('react-datetime');
 var moment = require('moment');
-//require('moment/locale/fi');
 
 
 var DateTimePicker = React.createClass({

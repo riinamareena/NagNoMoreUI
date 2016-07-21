@@ -5,14 +5,7 @@ var Nav = require('Nav');
 var Main = React.createClass({
   getDefaultProps: function(){
     return {
-      testArray:[
-        { id: 1, name: "Anna"},
-        { id: 2, name: "Riina"}
-      ],
-      testValue: 888,
-      testFunction: function(){
-        alert("Meitsi on kingi!");
-      },
+      family: { id: 5, familyName: "Rujot" },
       todos: [
         { id: 1, text: "Ota antihistamiini", assignee: 2 },
         { id: 2, text: "Laita ruokaa", assignee: 3 }
@@ -39,9 +32,6 @@ var Main = React.createClass({
   },
   getInitialState: function(){
     return{
-      testArray: this.props.testArray,
-      testValue: this.props.testValue,
-      testFunction: this.props.testFunction,
       todos: this.props.todos,
       todoid: this.props.todoid,
       categories: this.props.categories,
@@ -49,17 +39,6 @@ var Main = React.createClass({
       familyMembers: this.props.familyMembers,
       id: this.props.id
     }
-  },
-  handleChangeTestValue: function(value){
-    alert(this.state.testValue);
-    debugger;
-    this.setState({
-      testValue: value
-    });
-    debugger;
-    alert(this.state.testValue);
-    debugger;
-
   },
   handleChangeTodos(todos){
     this.setState({
@@ -97,9 +76,6 @@ var Main = React.createClass({
 
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
-        testArray: this.state.testArray,
-        testValue: this.state.testValue,
-        testFunction: this.state.testFunction,
         onChangeTestValue: this.handleChangeTestValue,
         todos: this.state.todos,
         todoid: this.state.todoid,
