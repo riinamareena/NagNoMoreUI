@@ -13,15 +13,15 @@ var Todo = React.createClass({
     var handleDeleteTodo = this.handleDeleteTodo;
 
     var id = this.props.id;
-    var text = this.props.text;
+    var title = this.props.title;
     var assignee = this.props.assignee;
-
+    var username = this.props.assignee.username;
 
     return(
       <tr>
         <td>{id}</td>
-        <td>{text}</td>
-        <td>{this.props.onSearchAssignee(assignee)}</td>
+        <td>{title}</td>
+        <td>{username}</td>
         <td><label onClick={handleEditTodo.bind(this, id)}>Edit</label><label onClick={handleDeleteTodo.bind(this, id)}>Delete</label></td>
       </tr>
     );

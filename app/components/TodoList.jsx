@@ -29,6 +29,10 @@ var TodoList = React.createClass({
     var findAssignee = this.findAssignee;
 
     var renderEveryTodo = function(){
+
+
+
+
       return todos.map((todo) => {
         return(
           <Todo key={todo.id} {...todo} onEdit={handleEdit} onDelete={handleDelete} onSearchAssignee={findAssignee} />
@@ -48,7 +52,11 @@ var TodoList = React.createClass({
             </tr>
           </thead>
           <tbody>
-            {renderEveryTodo()}
+            {todos.map((todo) => {
+              return(
+                <Todo key={todo.id} {...todo} onEdit={handleEdit} onDelete={handleDelete} onSearchAssignee={findAssignee} />
+              )
+            })}
           </tbody>
         </table>
       </div>
