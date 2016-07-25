@@ -18,7 +18,8 @@ var TodoAdd = React.createClass({
       time: undefined,
       priority: undefined,
       privacy: false,
-      me: {"id":17,"username":"Ville","password":"salasana","enabled":true,"email":"ville@huu.haa","phoneNumber":"123456789","fullName":"Ville Rujo","family":null,"created":null,"credentialsNonExpired":true,"accountNonExpired":true,"accountNonLocked":true,"role":"ROLE_PARENT","authorities":[{"authority":"ROLE_PARENT"}]},
+      me: 17,
+      meObj: {"id":17,"username":"Ville","password":"salasana","enabled":true,"email":"ville@huu.haa","phoneNumber":"123456789","fullName":"Ville Rujo","family":null,"created":null,"credentialsNonExpired":true,"accountNonExpired":true,"accountNonLocked":true,"role":"ROLE_PARENT","authorities":[{"authority":"ROLE_PARENT"}]},
       desc: undefined
     }
   },
@@ -51,26 +52,35 @@ var TodoAdd = React.createClass({
   onFormSubmit: function(e){
     e.preventDefault();
     //id tulee ylempää
+
     var title = this.refs.title.value;
     var desc = this.state.desc;
     var created = moment.now();
     var due = this.state.time;
     var priority = undefined;
-    if(this.state.priority != "default"){
-      priority = this.state.priority;
+    if(this.state.selectedValuePriority != "default"){
+      priority = this.state.selectedValuePriority;
     }
     var privacy = this.state.privacy;
     var alarm = false;
-    var category = this.findCategory(this.selectedValueCategory);
+    //var category = this.findCategory(this.state.selectedValueCategory);
+    var category = undefined;
+    if(this.state.selectedValueCategory != "default"){
+      category = this.state.selectedValueCategory;
+    }
     var family = this.props.family;
     var creator = this.state.me;
-    var assigneeid = this.state.selectedValueFamilyMember;
-    var assignee = this.findUser(assigneeid);
+    var assignee = undefined;
+    if(this.state.selectedValueFamilyMember != "default"){
+      assignee = this.state.selectedValueFamilyMember;
+    }
+    //var assigneeid = this.state.selectedValueFamilyMember;
+    //var assignee = this.findUser(assigneeid);
     var location = undefined;
     var reminder = undefined;
     var status = "NEEDS_ACTION";
 
-    this.props.onAddTodo({
+    var todo = {
       id: undefined,
       title: title,
       description: desc,
@@ -79,35 +89,39 @@ var TodoAdd = React.createClass({
       priority: priority,
       privacy: privacy,
       alarm: alarm,
-      category: category,
-      family: family,
-      creator: creator,
-      assignee: assignee,
+      categoryId: category,
+      familyId: family,
+      creatorId: creator,
+      assigneeId: assignee,
       location: location,
       reminder: reminder,
       status: status
-    });
+    };
+
+
+
+    this.props.onAddTodo(todo);
     this.props.onHideTodoAdd();
   },
   handleSelectFamilyMember: function(event){
     this.setState({
       selectedValueFamilyMember: event.target.value
-    })
+    });
   },
   handleSelectCategory: function(event){
     this.setState({
       selectedValueCategory: event.target.value
-    })
+    });
   },
   handleSelectPriority: function(event){
     this.setState({
       selectedValuePriority: event.target.value
-    })
+    });
   },
   handleTimeChange: function(time){
     this.setState({
       time: time
-    })
+    });
   },
   handleShowAdditionalProps: function(){
     this.setState({

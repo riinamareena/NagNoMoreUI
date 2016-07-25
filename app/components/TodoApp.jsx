@@ -34,17 +34,7 @@ var TodoApp = React.createClass({
     return todo;
   },
   handleAddTodo: function(todo){
-    var todoid = this.props.todoid;
-    var todos = this.props.todos;
-
-    todo.id = todoid;
-
-    todos.push(todo);
-    todoid += 1;
-
-    this.props.handleChangeTodos(todos);
-    this.props.handleChangeTodoid(todoid);
-
+    this.props.handleAddTodo(todo);
   },
   handleEditTodo: function(id){
     this.setState({
@@ -125,6 +115,7 @@ var TodoApp = React.createClass({
     var family = this.props.family;
 
 
+
     if(page == "editTodo"){
 
       var todoEditid = this.state.todoEditid;
@@ -142,7 +133,7 @@ var TodoApp = React.createClass({
           {showTodoList ? (
               <div>
                 <h1 className="text-center page-title">To do list</h1>
-                <TodoList todos={todos} familyMembers={familyMembers} onEditTodo={handleEditTodo} onDeleteTodo={handleDeleteTodo} />
+                <TodoList todos={todos} familyMembers={familyMembers} onEditTodo={handleEditTodo} categories={categories} onDeleteTodo={handleDeleteTodo} />
                 <h3 className="text-center" onClick={handleHideTodoList}>Click to hide the to do list</h3>
               </div>
             )
@@ -153,7 +144,7 @@ var TodoApp = React.createClass({
             )
           }
           {showTodoAdd ? (
-              <TodoAdd familyMembers={familyMembers} categories={categories} onAddTodo={handleAddTodo} onHideTodoAdd={handleHideTodoAdd} />
+              <TodoAdd familyMembers={familyMembers} categories={categories} family={family} onAddTodo={handleAddTodo} onHideTodoAdd={handleHideTodoAdd} />
             )
           : (
               <div>
@@ -169,7 +160,6 @@ var TodoApp = React.createClass({
 
   },
   render: function(){
-
 
     var page = this.state.todoPage;
 

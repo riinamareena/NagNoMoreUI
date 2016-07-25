@@ -14,7 +14,9 @@ var DateTimePicker = React.createClass({
     }
   },
   handleChange: function(time){
-    this.props.onChange(time);
+    var value = time._d;
+    var momentVal = moment(value);
+    this.props.onChange(momentVal);
   },
   render: function(){
     var input = this.props.input;

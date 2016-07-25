@@ -15,6 +15,18 @@ var TodoList = React.createClass({
       return assigneeName;
 
   },
+  findCategory: function(id){
+    var categories = this.props.categories;
+    alert(id);
+    var categoryName = "";
+    categories.forEach(function(entry){
+      alert(entry.id+" "+entry.title);
+      if(entry.id == id){
+        categoryName = entry.title;
+      }
+    });
+    return categoryName;
+  },
   handleEdit: function(id) {
     this.props.onEditTodo(id);
   },
@@ -27,18 +39,8 @@ var TodoList = React.createClass({
     var handleEdit = this.handleEdit;
     var handleDelete = this.handleDelete;
     var findAssignee = this.findAssignee;
+    var findCategory = this.findCategory;
 
-    var renderEveryTodo = function(){
-
-
-
-
-      return todos.map((todo) => {
-        return(
-          <Todo key={todo.id} {...todo} onEdit={handleEdit} onDelete={handleDelete} onSearchAssignee={findAssignee} />
-        )
-      });
-    }
 
     return(
       <div>
@@ -48,13 +50,14 @@ var TodoList = React.createClass({
               <th>ID</th>
               <th>Task</th>
               <th>Assignee</th>
+              <th>Due</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {todos.map((todo) => {
               return(
-                <Todo key={todo.id} {...todo} onEdit={handleEdit} onDelete={handleDelete} onSearchAssignee={findAssignee} />
+                <Todo key={todo.id} {...todo} onEdit={handleEdit} onDelete={handleDelete} onSearchAssignee={findAssignee} onSearchCategory={findCategory} />
               )
             })}
           </tbody>

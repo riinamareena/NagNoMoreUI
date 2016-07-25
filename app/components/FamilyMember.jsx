@@ -13,15 +13,22 @@ var FamilyMember = React.createClass({
     var handleDeleteMember = this.handleDeleteMember;
 
     var id = this.props.id;
-    var name = this.props.name;
+    var name = this.props.username;
     var role = this.props.role;
+    var roleText = "";
+
+    if(role == "ROLE_CHILD"){
+      roleText = "Child";
+    } else if (role == "ROLE_PARENT") {
+      roleText = "Parent";
+    }
 
 
     return(
       <tr>
         <td>{id}</td>
         <td>{name}</td>
-        <td>{role}</td>
+        <td>{roleText}</td>
         <td><label onClick={handleEditMember.bind(this, id)}>Edit</label><label onClick={handleDeleteMember.bind(this, id)}>Delete</label></td>
       </tr>
     );
